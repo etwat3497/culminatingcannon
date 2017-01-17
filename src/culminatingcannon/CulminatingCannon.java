@@ -68,7 +68,7 @@ public class CulminatingCannon {
         return Δdy;
     }
     
-    public static double dyv1taOFv1(double Δdy,double t,double a){
+    public static double dytaOFv1(double Δdy,double t,double a){
         // DECLARE initial speed
         double v1;
 
