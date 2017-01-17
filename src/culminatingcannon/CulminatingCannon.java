@@ -19,37 +19,37 @@ public class CulminatingCannon {
         System.out.println("initial vel is: "+dv1taOFv1(dv1taOFdy(v1,t,a),t,a));
     }
     
-    public static double dxtOFv(double d, double t){
+    public static double dxtOFv1x(double dx, double t){
         // DECLARE A CONSTANT SPEED VARIABLE
-        double v;
+        double v1x;
         
         // CALCULATE FOR VELOCITY
-        v = d/t;
+        v1x = dx/t;
         
         // RETURN
-        return v;
+        return v1x;
     }
     
-    public static double dxvOFt(double d, double v){
+    public static double dxv1xOFt(double dx, double v1x){
         // DECLARE A DELTA TIME VARIABLE
         double t;
         
         // CALCULATE FOR DELTA TIME
-        t = d/v;
+        t = dx/v1x;
         
         // RETURN
-        return v;
+        return t;
     }
     
-    public static double tvOFdx(double t, double v){
+    public static double tv1xOFdx(double t, double v1x){
         // DECLARE A DELTA DISPLACEMENT
-        double d;
+        double dx;
         
         // CALCULATE FOR DELTA DISPLACEMENT
-        d = t*v;
+        dx = t*v1x;
         
         // RETURN
-        return d;
+        return dx;
     }
     
     
@@ -57,47 +57,47 @@ public class CulminatingCannon {
     // IT USES THE FORMULA d = v1*t + 1/2 * a * t *t
 
     
-    public static double dyv1taOFdy(double v1,double t,double a){
+    public static double v1ytaOFdy(double v1y,double t,double a){
         // DECLARE Δ DISPLACEMENT VARIABLE
-        double Δdy;
+        double dy;
 
         // CALCULATE FOR Δ DISPLACEMENT
-        Δdy=v1*t+0.5*a*Math.pow(t, 2);
+        dy=v1y*t+0.5*a*Math.pow(t, 2);
         
         // RETURN
-        return Δdy;
+        return dy;
     }
     
-    public static double dytaOFv1(double Δdy,double t,double a){
+    public static double dytaOFv1(double dy,double t,double a){
         // DECLARE initial speed
         double v1;
 
         // CALCULATE FOR initial speed
-        v1=(Δdy-(0.5*a*Math.pow(t, 2)))/t;
+        v1=(dy-(0.5*a*Math.pow(t, 2)))/t;
         
         // RETURN
         return v1;
     }
     
-    public static double dyv1tv1OFa(double Δdy,double t,double v1){
+    public static double dyv1ytOFa(double dy,double t,double v1y){
         // DECLARE ACCELERATION VARIABLE
         double a;
 
         // CALCULATE FOR initial speed
-        a=(2*(Δdy-(v1*t)))/Math.pow(t, 2);
+        a=(2*(dy-(v1y*t)))/Math.pow(t, 2);
         
         // RETURN
         return a;
     }
     
-    public static double dyv1av1OFt(double Δdy,double a,double v1){
+    public static double dyv1yaOFt(double dy,double a,double v1y){
         // DECLARE ACCELERATION VARIABLE
         double t1, t2;
         double trueTime = 133742069; // set as wild number to verify for testing
         
         // CALCULATE FOR initial speed
-        t1=(-2*v1+Math.sqrt(Math.pow(2*v1, 2)-4*(a*(-2*Δdy))))/2*a;
-        t2=(-2*v1-Math.sqrt(Math.pow(2*v1, 2)-4*(a*(-2*Δdy))))/2*a;
+        t1=(-2*v1y+Math.sqrt(Math.pow(2*v1y, 2)-4*(a*(-2*dy))))/2*a;
+        t2=(-2*v1y-Math.sqrt(Math.pow(2*v1y, 2)-4*(a*(-2*dy))))/2*a;
         
         // CHECK WHICH ONE OF THE TIMES IS VALID AND SET THE TRUE TIME TO IT
         if(t1<0){
@@ -112,35 +112,35 @@ public class CulminatingCannon {
     
     // THIS IS SECTION 1 FOR PROJECTILE MOTION
     // IT USES THE FORMULA d = v2*t - 1/2 * a * t *t
-    public static double v2taOFdy(double v2,double t,double a){
+    public static double v2ytaOFdy(double v2y,double t,double a){
         // DECLARE Δ DISPLACEMENT VARIABLE
         double dy;
 
         // CALCULATE FOR Δ DISPLACEMENT
-        dy = v2*t - (a*t*t)/2;
+        dy = v2y*t - (a*t*t)/2;
         
         // RETURN
         return dy;
     }
     
-    public static double dytaOFv2(double dy,double t,double a){
+    public static double dytaOFv2y(double dy,double t,double a){
         // DECLARE FINAL VELOCITY VARIBALE
-        double v2;
+        double v2y;
 
         // CALCULATE FOR FINAL VELOCITY
         v2 = (dy+(a*t*t)/2)/t;
         
         // RETURN
-        return v2;
+        return v2y;
     }
     
-    public static double dyv2aOFt(double dy,double v2,double a){
+    public static double dyv2yaOFt(double dy,double v2y,double a){
         // DECLARE FINAL VELOCITY VARIBALE
         double t1, t2, trueTime = 0;
 
         // CALCULATE FOR FINAL VELOCITY
-        t1 = (-v2 + Math.sqrt(v2*v2 - 4*(-a/2)*(-dy)))/2*(-a);
-        t2 = (-v2 + Math.sqrt(v2*v2 - 4*(-a/2)*(-dy)))/2*(-a);
+        t1 = (-v2y + Math.sqrt(v2y*v2y - 4*(-a/2)*(-dy)))/2*(-a);
+        t2 = (-v2y + Math.sqrt(v2y*v2y - 4*(-a/2)*(-dy)))/2*(-a);
         
         // CHECK WHICH ONE OF THE TIMES IS VALID AND SET THE TRUE TIME TO IT
         if(t1<0){
@@ -153,12 +153,12 @@ public class CulminatingCannon {
         return trueTime;
     }
     
-    public static double dyv2tOFa(double dy,double v2,double t){
+    public static double dyv2ytOFa(double dy,double v2y,double t){
         // DECLARE ACCELERATION VARIABLE
         double a;
 
         // CALCULATE FOR initial speed
-        a=(-2)*(dy-v2*t)/(t*t);
+        a=(-2)*(dy-v2y*t)/(t*t);
         
         // RETURN
         return a;
@@ -177,158 +177,165 @@ public class CulminatingCannon {
     
     //Method to solve for the initial velocity given the final velocity, acceleration, and time
     //Uses the formula v1=v2-at
-    public static double v2atOFv1(double v2, double a, double t){
+    public static double v2yatOFv1y(double v2y, double a, double t){
         //Variable to be solved for
-        double v1;
+        double v1y;
         //Formula to solve for variable
-        v1 = v2-(a*t);
+        v1y = v2y-(a*t);
         //Return value
-        return v1;
+        return v1y;
     }
     
     //Method to solve for the acceleration given the initial velocity, final velocity, and time
     //Uses the formula a=(v2-v1)/t
-    public static double v1v2tOFa(double v1, double v2, double t){
+    public static double v1yv2ytOFa(double v1y, double v2y, double t){
         //Variable to be solved for
         double a;
         //Formula to solve for variable
-        a=(v2-v1)/t;
+        a=(v2y-v1y)/t;
         //Return value
         return a;
     }
     
     //Method to solve for the time given the initial velocity, final velocity, and acceleration
     //Uses the formula t=(v2-v1)/a
-    public static double v1v2aOFt(double v1, double v2, double a){
+    public static double v1yv2yaOFt(double v1y, double v2y, double a){
         //Variable to be solved for
         double t;
         //Formula to solve for variable
-        t=(v2-v1)/a;
+        t=(v2y-v1y)/a;
         //Return value
         return t;
     }
     
     //Method to solve for the final velocity given the initial velocity, acceleration, and displacement
     //Uses the formula v2= square root(v1*v1+2ad)
-    public static double v1adyOFv2(double v1, double a, double d){
+    public static double v1yadyOFv2y(double v1y, double a, double dy){
         //Variable to be solved for
-        double v2;
+        double v2y;
         //Formula to solve for variable
-        v2=Math.sqrt( (v1*v1) + (2*a*d) );
+        v2y=Math.sqrt( (v1y*v1y) + (2*a*dy) );
         //Return value
-        return v2;
+        return v2y;
     }
     
     //Method to solve for the initial velocity given the final velocity, acceleration, and displacement
     //Uses the formula v1= square root(v2*v2-2ad)
-    public static double v2adyOFv1(double v2, double a, double d){
+    public static double v2yadyOFv1y(double v2y, double a, double dy){
         //Variable to be solved for
-        double v1;
+        double v1y;
         //Formula to solve for variable
-        v1=Math.sqrt( (v2*v2) - (2*a*d) );
+        v1y=Math.sqrt( (v2y*v2y) - (2*a*dy) );
         //Return value
-        return v1;
+        return v1y;
     }
     
     //Method to solve for the acceleration given the initial velocity, final velocity, and displacement
     //Uses the formula a = (v2*v2-v1*v1)/2d
-    public static double v1v2dyOFa(double v1, double v2, double d){
+    public static double v1yv2ydyOFa(double v1y, double v2y, double dy){
         //Variable to be solved for
         double a;
         //Formula to solve for variable
-        a=((v2*v2)-(v1*v1))/(2*d);
+        a=((v2y*v2y)-(v1y*v1y))/(2*dy);
         //Return value
         return a;
     }
     
     //Method to solve for the displacement given the initial velocity, final velocity, and acceleration
     //Uses the formula d = (v2*v2-v1*v1)/2a
-    public static double v1v2aOFdy(double v1, double v2, double a){
+    public static double v1yv2yaOFdy(double v1y, double v2y, double a){
         //Variable to be solved for
-        double d;
+        double dy;
         //Formula to solve for variable
-        d=((v2*v2)-(v1*v1))/(2*a);
+        dy=((v2y*v2y)-(v1y*v1y))/(2*a);
         //Return value
-        return d;
+        return dy;
     }
     
     //Method to solve for the displacement given the initial velocity, final velocity, and time
     //Uses the formula d=((v2+v1)/2)*t 
-    public static double v1v2tOFdy(double v1, double v2, double t){
+    public static double v1yv2ytOFdy(double v1y, double v2y, double t){
         //Variable to be solved for
-        double d;
+        double dy;
         //Formula to solve for variable
-        d=((v2+v1)/2)*t;
+        dy=((v2y+v1y)/2)*t;
         //Return value
-        return d;
+        return dy;
     }
     
     //Method to solve for the time given the initial velocity, final velocity, and displacement
     //Uses the formula t=2d/v2+v1
-    public static double v1v2dyOFt(double v1, double v2, double d){
+    public static double v1yv2ydyOFt(double v1y, double v2y, double dy){
         //Variable to be solved for
         double t;
         //Formula to solve for variable
-        t=(2*d)/(v2+v1);
+        t=(2*dy)/(v2y+v1y);
         //Return value
         return t;
     }
     
     //Method to solve for the final velocity given the initial velocity, displacement, and time
     //Uses the formula v2=2d/t-v1
-    public static double v1dytOFv2(double v1, double d, double t){
+    public static double v1ydytOFv2y(double v1y, double dy, double t){
         //Variable to be solved for
-        double v2;
+        double v2y;
         //Formula to solve for variable
-        v2=((2*d)/t)-v1;
+        v2y=((2*dy)/t)-v1y;
         //Return value
-        return v2;
+        return v2y;
     }
     
     //Method to solve for the initial velocity given the final velocity, displacement, and time
     //Uses the formula v1=2d/t-v2
-    public static double v2dytOFv1(double v2, double d, double t){
+    public static double v2ydytOFv1y(double v2y, double dy, double t){
         //Variable to be solved for
-        double v1;
+        double v1y;
         //Formula to solve for variable
-        v1=((2*d)/t)-v2;
+        v1y=((2*dy)/t)-v2y;
         //Return value
-        return v1;
+        return v1y;
     }
 
- public static double v1xv1yWithTheta(double vx, double vy){
+ public static double v1xv1yWithTheta(double v1x, double v1y){
         // DECLARATIONS
         double angle=0;
         double angleDegrees=0;
         
         // CALCULATE THE INITIAL ANGLE
-        angle = Math.atan(vy/vx);
+        angle = Math.atan(v1y/v1x);
         angleDegrees=Math.toDegrees(angle);
         
         // RETURN THE DEGREES FOR THE INITAL ANGLE
         return angleDegrees; 
     }
     
-    public static double v1xThetaFORv1y(double vx, double initialTheta){
+    public static double v1xThetaFORv1y(double v1x, double initialTheta){
         // DECLARATIONS
-        double vy;
+        double v1y;
         
         // CALCULATE THE
-        vy = vx * Math.tan(initialTheta);
+        v1y = v1x * Math.tan(initialTheta);
         
         // RETURN THE 
-        return vy; 
+        return v1y; 
     }
     
-    public static double v1yThetaFORv1x(double vx, double initialTheta){
+    public static double v1yThetaFORv1x(double v1x, double initialTheta){
         // DECLARATIONS
-        double vy;
+        double v1y;
         
         // CALCULATE THE
-        vy = vx * Math.tan(initialTheta);
+        v1y = v1x * Math.tan(initialTheta);
         
         // RETURN THE 
-        return vy; 
+        return v1y; 
+    }
+    
+    public static double finalVelocity(double v2y, double v1x){
+        double v2;
+        
+        v2 = Math.sqrt((v2y*v2y)+(v1x*v1x));
+        return v2;
     }
 
 
