@@ -68,15 +68,15 @@ public class CulminatingCannon {
         return dy;
     }
     
-    public static double dytaOFv1(double dy,double t,double a){
+    public static double dytaOFv1y(double dy,double t,double a){
         // DECLARE initial speed
-        double v1;
+        double v1y;
 
         // CALCULATE FOR initial speed
-        v1=(dy-(0.5*a*Math.pow(t, 2)))/t;
+        v1y=(dy-(0.5*a*Math.pow(t, 2)))/t;
         
         // RETURN
-        return v1;
+        return v1y;
     }
     
     public static double dyv1ytOFa(double dy,double t,double v1y){
@@ -166,13 +166,13 @@ public class CulminatingCannon {
     
     //Method to solve for the final velocity given the initial velocity, acceleration, and time
     //Uses the formula v2=v1+at
-    public static double v1atOFv2(double v1, double a, double t){
+    public static double v1yatOFv2y(double v1y, double a, double t){
         //Variable to be solved for
-        double v2;
+        double v2y;
         //Formula to solve for variable
-        v2 = v1+(a*t);
+        v2y = v1y+(a*t);
         //Return value
-        return v2;
+        return v2y;
     }
     
     //Method to solve for the initial velocity given the final velocity, acceleration, and time
@@ -296,7 +296,7 @@ public class CulminatingCannon {
         return v1y;
     }
 
- public static double v1xv1yWithTheta(double v1x, double v1y){
+ public static double v1xv1yWiththeta1(double v1x, double v1y){
         // DECLARATIONS
         double angle=0;
         double angleDegrees=0;
@@ -309,7 +309,7 @@ public class CulminatingCannon {
         return angleDegrees; 
     }
     
-    public static double v1xThetaFORv1y(double v1x, double initialTheta){
+    public static double v1xtheta1FORv1y(double v1x, double initialTheta){
         // DECLARATIONS
         double v1y;
         
@@ -320,7 +320,7 @@ public class CulminatingCannon {
         return v1y; 
     }
     
-    public static double v1yThetaFORv1x(double v1x, double initialTheta){
+    public static double v1ytheta1FORv1x(double v1x, double initialTheta){
         // DECLARATIONS
         double v1y;
         
@@ -331,13 +331,20 @@ public class CulminatingCannon {
         return v1y; 
     }
     
-    public static double finalVelocity(double v2y, double v1x){
+    public static double v1xv2yOFv2(double v2y, double v1x){
         double v2;
         
         v2 = Math.sqrt((v2y*v2y)+(v1x*v1x));
         return v2;
+        //Make sure to include theta2 in the final velocity
     }
-
+    
+    public static double v1xv1yOFv1(double v1x, double v1y){
+        double v1;
+        
+        v1 = Math.sqrt((v1x*v1x)+(v1y*v1y));
+        return v1;
+        //Make sure to include theta1 in the final velocity
 
     
 }
