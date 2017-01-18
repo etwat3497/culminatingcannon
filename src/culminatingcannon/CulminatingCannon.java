@@ -322,13 +322,13 @@ public class CulminatingCannon {
     
     public static double v1ytheta1FORv1x(double v1x, double initialTheta){
         // DECLARATIONS
-        double v1y;
+        double v1x;
         
         // CALCULATE THE
-        v1y = v1x * Math.tan(initialTheta);
+        v1x = v1x * Math.tan(initialTheta);
         
         // RETURN THE 
-        return v1y; 
+        return v1x; 
     }
     
     public static double v1xv2yOFv2(double v2y, double v1x){
