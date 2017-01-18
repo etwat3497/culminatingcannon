@@ -320,7 +320,7 @@ public class CulminatingCannon {
         return v1y; 
     }
     
-    public static double v1ytheta1FORv1x(double v1x, double initialTheta){
+    public static double v1ytheta1FORv1x(double v1y, double initialTheta){
         // DECLARATIONS
         double v1x;
         
