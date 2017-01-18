@@ -15,8 +15,8 @@ public class CulminatingCannon {
         double v1=10, t=6,a=-9.8;
         
         
-        System.out.println("dislacement is: "+dv1taOFdy(v1,t,a));
-        System.out.println("initial vel is: "+dv1taOFv1(dv1taOFdy(v1,t,a),t,a));
+        System.out.println("dislacement is: "+v1ytaOFdy(v1,t,a));
+        System.out.println("initial vel is: "+dytaOFv1y(v1ytaOFdy(v1,t,a),t,a));
     }
     
     public static double dxtOFv1x(double dx, double t){
@@ -128,7 +128,7 @@ public class CulminatingCannon {
         double v2y;
 
         // CALCULATE FOR FINAL VELOCITY
-        v2 = (dy+(a*t*t)/2)/t;
+        v2y = (dy+(a*t*t)/2)/t;
         
         // RETURN
         return v2y;
@@ -296,55 +296,82 @@ public class CulminatingCannon {
         return v1y;
     }
 
- public static double v1xv1yWiththeta1(double v1x, double v1y){
-        // DECLARATIONS
-        double angle=0;
-        double angleDegrees=0;
-        
-        // CALCULATE THE INITIAL ANGLE
-        angle = Math.atan(v1y/v1x);
-        angleDegrees=Math.toDegrees(angle);
-        
-        // RETURN THE DEGREES FOR THE INITAL ANGLE
-        return angleDegrees; 
-    }
     
-    public static double v1xtheta1FORv1y(double v1x, double initialTheta){
-        // DECLARATIONS
-        double v1y;
-        
-        // CALCULATE THE
-        v1y = v1x * Math.tan(initialTheta);
-        
-        // RETURN THE 
-        return v1y; 
-    }
     
-    public static double v1ytheta1FORv1x(double v1y, double initialTheta){
-        // DECLARATIONS
-        double v1x;
-        
-        // CALCULATE THE
-        v1x = v1x * Math.tan(initialTheta);
-        
-        // RETURN THE 
-        return v1x; 
-    }
     
-    public static double v1xv2yOFv2(double v2y, double v1x){
-        double v2;
-        
-        v2 = Math.sqrt((v2y*v2y)+(v1x*v1x));
-        return v2;
-        //Make sure to include theta2 in the final velocity
-    }
-    
-    public static double v1xv1yOFv1(double v1x, double v1y){
-        double v1;
-        
-        v1 = Math.sqrt((v1x*v1x)+(v1y*v1y));
-        return v1;
-        //Make sure to include theta1 in the final velocity
+    // BELOW IS USE OF TRIGNOMETRY EQUATIONS
 
+    /**
+     * GET THE THETA FROM TWO SIDE COMPONENTIAL LENGTHS
+     * @param v1x
+     * @param v1y
+     * @return theta
+     */ // USING TAN
+    public static double oppAdjOFtheta(double v1x, double v1y){
+        return Math.toDegrees(Math.atan(v1y/v1x)); 
+    }
+
+    // NOTE FOR ETHAN / JOSH !!!!!!
+    // JUST USE ANGLE SUM OF A TRIANGLE THEOREM IF YOU NEED TO GET THE ADJ ANGLE IN ANY OF THE NEXT FUNCTIONS
+    public static double oppThetaOFadj(double opp, double theta){
+        return oppAdjOFtheta(opp, 90-theta);
+    }
+    
+    /**
+     * USED TO OBTAIN THE OPPOSITE SIDELENGTH 
+     * WITH THETA AND THE AJDACENT SIDELENGTH
+     * @param x
+     * @param theta
+     * @return
+     */ // USING TAN
+    public static double adjThetaOFopp(double adj, double theta){
+        // RETURN THE y component of the right angle triangle 
+        return adj * Math.tan(Math.toRadians(theta));
+    }
+    
+    //USING SIN
+    public static double oppHypOFtheta(double opp, double hyp){
+        return Math.toDegrees(Math.asin(opp/hyp));
+    }
+    //USING SIN
+    public static double oppThetaOFhyp(double opp, double theta){
+        return opp*Math.sin(Math.toRadians(theta));
+    }
+    
+    // USING COS
+    public static double adjHypOFtheta(double adj, double hyp){
+        return Math.toDegrees(Math.acos(adj/hyp));
+    }
+    
+    // USING COS
+    public static double adjThetaOFhyp(double adj, double theta){
+        return adj*Math.sin(Math.toRadians(theta));
+    }
+    
+    
+    // TWO METHODS BELOW ONLY DEAL WITH THE PYTHAGOREAN THEOREM
+    
+    /**
+     * USE THE PYTHAGOREAN THEOREM TO OBTAIN THE HYPOTENUSE
+     * USEING THE X AND Y COMPONENT OF A RIGHT ANGLE TRIANGLE
+     * @param adj
+     * @param opp
+     * @return Hypotenuse
+     */
+    public static double pythagFORHypotenuse(double adj, double opp){
+        return Math.sqrt((adj*adj)+(opp*opp)); // using pythagoras' theorem to obtain the hypotenuse
+        //Make sure to include theta1 in the final velocity
+    }
+    
+    /**
+     * USE THE PYTHAGOREAN THEOREM TO OBTAIN A SIDELENGTH
+     * USING HYPOTENUSE AND ANOTHER SIDELENGTH FOR A RIGHT ANGLE TRIANGLE
+     * @param hypotenuse
+     * @param sidelength
+     * @return Other side length
+     */
+    public static double pythagFORSidelength(double hypotenuse, double sidelength){
+        return Math.sqrt((hypotenuse*hypotenuse)-(sidelength*sidelength)); // return the missing sidelength
+    }
     
 }
